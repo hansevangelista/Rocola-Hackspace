@@ -1,0 +1,115 @@
+@import 'normalize.styl'	
+@import 'pages.styl'	
+@import 'musicbar.styl'	
+@import 'theme.styl'	
+
+.wrapper
+	background-image url("../img/back.jpg")
+	background-size cover
+	background-repeat no-repeat
+	background-position center center
+
+.search
+	background-color rgba(black, 0.8)
+	min-height 100%
+	.header
+		background-color base-color
+		padding 1em
+		.title
+			margin 0
+			color secondary-color
+			font-size 1.5em
+			text-align center
+			margin-bottom 0.5em
+		.input-content
+			display table
+			margin auto
+			.input
+				font-size 0.8em
+				border-radius 3em
+				padding 0.5em 2em
+				width 200px
+				border none
+				outline 0
+				color text-color
+	.result
+		padding 1em
+		.track
+			border-bottom 1px solid rgba(white, 0.5)
+			color rgba(white, 0.8)
+			padding 0.5em
+			font-size 0.8em
+			display table
+			.name
+				display table-cell
+				width 100%
+			.ckeck
+				padding 0.5em
+				.fa-check
+					color tertiary-color
+					display none
+
+.player
+	background-color rgba(black, 0.8)
+	min-height 100%
+	.song
+		position relative
+		.volume
+			position absolute
+			padding 1em
+			color gray
+		.bomb
+			position absolute
+			right 0
+			padding 1em
+			color gray
+			span
+				margin-right 0.25em
+				font-size 0.8em
+		.play
+			position absolute
+			top 50%
+			left 50%
+			transform translate(-50%, -50%)
+			font-size 4em
+			color rgba(white, 0.5)
+		.song-img
+			margin 0
+			width 100%
+			img
+				width 100%
+				vertical-align top
+		.song-info
+			position absolute
+			bottom 0
+			right 0
+			left 0
+			background-image linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.25) 20%,rgba(0,0,0,0.75))
+			padding 0.5em 1em
+			.content
+				display table
+				margin-bottom 0.5em
+				.name
+					color secondary-color
+					display table-cell
+					width 100%
+	.playlist
+		padding 1em
+		.track
+			border-bottom 1px solid rgba(white, 0.5)
+			color rgba(white, 0.8)
+			padding 0.5em
+			font-size 0.8em
+			display table
+			.name
+				display table-cell
+				vertical-align middle
+				width 100%
+				padding-right 1em
+			.image
+				width 30px
+				margin 0
+				img
+					width 100%
+					vertical-align top
+					border-radius 50%

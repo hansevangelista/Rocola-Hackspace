@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">	
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+          maximum-scale=1">
+    <title>Rocola Hackspace</title>
+    <link
+    href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+    rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet"/>
+  </head
+  <body>
+    
+    <div class="wrapper">
+      <div class="page">
+        <div class="search">
+	  <header class="header">
+	    <h1 class="title">Rocola HackSpace</h1>
+	    <div class="input-content">
+	      <input class="input" type="text"
+                     placeholder="Search songs, albums ..."></input>
+	    </div>
+	  </header>
+	  <div class="result">
+            <!-- <div class="track">
+	    <div class="name">Jojojo feliz navidad</div>
+	    <div class="ckeck">
+	    <i class="fa fa-check"></i>
+	    <i class="fa fa-plus"></i>
+	    </div>
+            </div> -->
+	  </div>
+        </div>
+      </div>
+      <div class="page">
+        <div class="player">
+	  <div class="song">
+            <!-- <div class="bomb"><span>2</span><i class="fa fa-bomb"></i></div> -->
+            <!-- <div class="volume"><i class="fa fa-volume-up"></i></div> -->
+            <!-- <div class="play"><i class="fa fa-play-circle"></i></div> -->
+            <figure class="song-img">
+              <!-- <img src="img/song.jpg"/> -->
+              <img src="img/logo.png"/>
+            </figure>
+            <div class="song-info">
+	      <div class="content">
+	        <div class="name">Swipe rigth to search for the good stuff</div>
+	        <div class="musicbar animate">
+	          <span class="bar1 a3 lter"></span>
+	          <span class="bar2 a5 lt"></span>
+	          <span class="bar3 a1 bg"></span>
+	          <span class="bar4 a4 dk"></span>
+	          <span class="bar5 a2 dker"></span>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+          <div class="playlist"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/template" id="resultTrack">
+      <div class="track"
+           data-name="<%= name %>"
+           data-album="<%= album %>"
+           data-uri="<%= uri %>">
+	<div class="name"> <%= name %> - <%= album %> </div>
+	<div class="ckeck">
+	  <i class="fa fa-check"></i>
+	  <i class="fa fa-plus"></i>
+	</div>
+      </div>
+    </script>
+    
+    <script type="text/template" id="track">
+      <div class="track">
+	<div class="name"> <%= name %> - <%= album %> </div>
+        <figure class="image"><img src="<%= img %>"/></figure>
+      </div>
+    </script>
+
+    <script type="text/javascript" src="js/lib/swipes.js"></script>
+    <script type="text/javascript" src="js/lib/pages.js"></script>
+    
+    <script type="text/javascript" src="js/vendor/underscore.js"></script>
+
+    <script type="text/javascript" src="js/vendor/socket.io.js"></script>
+    <script type="text/javascript" src="js/lib/stringToDOM.js"></script>
+    <script type="text/javascript" src="js/lib/player.js"></script>
+
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
+</html>
