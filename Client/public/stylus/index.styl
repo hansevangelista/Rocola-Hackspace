@@ -1,7 +1,14 @@
-@import 'normalize.styl'	
-@import 'pages.styl'	
-@import 'musicbar.styl'	
-@import 'theme.styl'	
+@import 'nib'
+@import 'normalize.styl'
+@import 'theme.styl'
+@import 'pages.styl'
+@import 'musicbar.styl'
+
+@keyframes spin
+	0%
+		transform rotate(0deg)
+	100%
+		transform rotate(360deg)
 
 .wrapper
 	background-image url("../img/back.jpg")
@@ -32,8 +39,20 @@
 				border none
 				outline 0
 				color text-color
+	.spinner
+		text-align center
+		padding .5em
+		font-size 1.5em
+		color secondary-color
+		display none
+		&.visible
+			display block
+			.fa-spinner
+				animation 1.5s spin infinite
 	.result
 		padding 1em
+		max-width 1000px
+		margin auto
 		.track
 			border-bottom 1px solid rgba(white, 0.5)
 			color rgba(white, 0.8)
@@ -54,6 +73,8 @@
 	min-height 100%
 	.song
 		position relative
+		max-width 640px
+		margin auto
 		.volume
 			position absolute
 			padding 1em
@@ -95,6 +116,8 @@
 					width 100%
 	.playlist
 		padding 1em
+		max-width 1000px
+		margin auto
 		.track
 			border-bottom 1px solid rgba(white, 0.5)
 			color rgba(white, 0.8)
@@ -107,9 +130,11 @@
 				width 100%
 				padding-right 1em
 			.image
-				width 30px
+				width 2.5em
 				margin 0
 				img
 					width 100%
 					vertical-align top
 					border-radius 50%
+			&:first-child
+				display none

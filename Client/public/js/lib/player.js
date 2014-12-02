@@ -1,6 +1,9 @@
 function Player (socket) {
 
     var playlist = document.querySelector('.playlist'),
+        image = document.querySelector('.song img'),
+        name = document.querySelector('.song .name'),
+        spinner = document.querySelector('.spinner'),
         resultTracks = document.querySelector('.result'),
         trackTemplate = _.template(document.getElementById('track').innerHTML),
         resultTrackTemplate =
@@ -12,7 +15,9 @@ function Player (socket) {
     socket.on('ended', ended);
 
     function init (tracks) {
+
         console.log( "init", tracks );
+
         for( i = 0; i < tracks.length; i++){
 
             track = tracks[i];
@@ -21,13 +26,20 @@ function Player (socket) {
 
             playlist.appendChild(html);
         }
-        if(playlist.children.length) 
-            document.getElementById('albumArt')
-            .setAttribute("src", 
-                          playlist.getElementsByTagName('img')[0].getAttribute("src"));
+
+        if(playlist.children.length){
+            
+            var first = playlist.children[0];
+
+            image.setAttribute('src', first.dataset.img);
+
+            name.innerHTML = first.dataset.name + ' - ' + first.dataset.album;
+        }
     }
 
     function result (tracks) {
+        
+        spinner.classList.remove('visible');
 
         for( i = 0; i < tracks.length; i++){
 
@@ -37,6 +49,8 @@ function Player (socket) {
 
             html.addEventListener('click', function () {
 
+                this.style.pointerEvents = 'none';
+                
                 var track = {
                     name: this.dataset.name,
                     album: this.dataset.album,
@@ -44,12 +58,21 @@ function Player (socket) {
                 };
 
                 add(track);
+
+                var faCheck = this.querySelector('.fa-check');
+                var faPlus = this.querySelector('.fa-plus');
+                // console.log( "faCheck", faCheck, "faPlus", faPlus );
+                faCheck.style.display = 'block';
+                faPlus.style.display = 'none';
             });
         }
     }
 
     function search (text) {
         resultTracks.innerHTML = "";
+
+        spinner.classList.add('visible');
+
         socket.emit('search', text);
     }
 
@@ -62,8 +85,12 @@ function Player (socket) {
 
         console.log("------------->>>> New Track Event Triggered <<<<<<-------------------");
         console.log("This is the playlist: ", playlist);
-        if(!playlist.children.length) 
-            document.getElementById('albumArt').setAttribute("src", track.img);
+
+        if(!playlist.children.length){
+            image.setAttribute("src", track.img);
+            name.innerHTML = track.name + ' - ' + track.album;
+        }
+
         var html = stringToDOM( trackTemplate(track) );
         playlist.appendChild(html);
     }
@@ -71,18 +98,17 @@ function Player (socket) {
     function ended () {
         console.log( "Playback Ended" );
 
-        var playlist = document.querySelector('.playlist'),
-            first = playlist.children[0];
+        var first = playlist.children[0];
         console.log( "Deleted First Item (pop)", first );
         playlist.removeChild(first);
         
-        if(playlist.children.length) 
-            document.getElementById('albumArt')
-            .setAttribute("src", 
-                          playlist.getElementsByTagName('img')[0].getAttribute("src"));
+        if(playlist.children.length){
+            first = playlist.children[0];
+            image.setAttribute("src", first.dataset.img);
+            name.innerHTML = first.dataset.name + ' - ' + first.dataset.album;
+        } 
         else
-            document.getElementById('albumArt')
-            .setAttribute("src", "img/logo.png");
+            image.setAttribute("src", "img/logo.png");
     }
 
     return {

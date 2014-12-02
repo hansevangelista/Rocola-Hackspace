@@ -22,26 +22,18 @@
                      placeholder="Search songs, albums ..."></input>
 	    </div>
 	  </header>
+          <div class="spinner">
+            <i class="fa fa-spinner"></i>
+          </div>
 	  <div class="result">
-            <!-- <div class="track">
-	    <div class="name">Jojojo feliz navidad</div>
-	    <div class="ckeck">
-	    <i class="fa fa-check"></i>
-	    <i class="fa fa-plus"></i>
-	    </div>
-            </div> -->
 	  </div>
         </div>
       </div>
       <div class="page">
         <div class="player">
 	  <div class="song">
-            <!-- <div class="bomb"><span>2</span><i class="fa fa-bomb"></i></div> -->
-            <!-- <div class="volume"><i class="fa fa-volume-up"></i></div> -->
-            <!-- <div class="play"><i class="fa fa-play-circle"></i></div> -->
             <figure class="song-img">
-              <!-- <img src="img/song.jpg"/> -->
-              <img id="albumArt" src="img/logo.png"/>
+              <img src="img/logo.png"/>
             </figure>
             <div class="song-info">
 	      <div class="content">
@@ -75,7 +67,11 @@
     </script>
     
     <script type="text/template" id="track">
-      <div class="track">
+      <div class="track"
+           data-name="<%= name %>"
+           data-album="<%= album %>"
+           data-uri="<%= uri %>"
+           data-img="<%= img %>">
 	<div class="name"> <%= name %> - <%= album %> </div>
         <figure class="image"><img src="<%= img %>"/></figure>
       </div>
@@ -93,3 +89,7 @@
     <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>
+
+<!-- <div class="bomb"><span>2</span><i class="fa fa-bomb"></i></div> -->
+<!-- <div class="volume"><i class="fa fa-volume-up"></i></div> -->
+<!-- <div class="play"><i class="fa fa-play-circle"></i></div> -->
