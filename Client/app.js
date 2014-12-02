@@ -61,6 +61,7 @@ io.on('connection', function (socket) {
 
     function ended () {
         console.log( "----------->>>>>> Playback Ended <<<<<<<<----------" );
+        tracklist.shift(); 
         socket.emit('ended');
     }
 
@@ -89,6 +90,7 @@ io.on('connection', function (socket) {
     }
 
     function add (track) {
+        console.log( "----------->>>>>> New Tracklist Added  <<<<<<<<----------".red );
 
         getImage(track, function () {
 
