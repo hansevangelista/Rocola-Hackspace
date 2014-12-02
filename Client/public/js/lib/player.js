@@ -21,6 +21,10 @@ function Player (socket) {
 
             playlist.appendChild(html);
         }
+        if(playlist.children.length) 
+            document.getElementById('albumArt')
+            .setAttribute("src", 
+                          playlist.getElementsByTagName('img')[0].getAttribute("src"));
     }
 
     function result (tracks) {
