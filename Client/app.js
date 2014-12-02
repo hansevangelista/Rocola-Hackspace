@@ -40,6 +40,7 @@ var socketio = require('socket.io'),
     io = socketio(server);
 
 var raspi,
+    endedRecently = false,
     tracklist = [];
 
 io.on('connection', function (socket) {
@@ -60,9 +61,24 @@ io.on('connection', function (socket) {
     }
 
     function ended () {
-        console.log( "----------->>>>>> Playback Ended <<<<<<<<----------" );
-        tracklist.shift(); 
-        socket.emit('ended');
+        if (!endedRecently){
+            console.log( "----------->>>>>> Playback Ended <<<<<<<<----------" );
+            console.log("The length of tracklist is: ".red + tracklist.length);
+            console.log(tracklist);
+            tracklist.shift();
+            console.log(tracklist);
+            socket.emit('ended');
+            socket.broadcast.emit('ended');
+            endedRecently = true;
+            setTimeout(function(){
+                endedRecently = false;
+            },3000);
+        }
+        else {
+            setTimeout(function(){
+                endedRecently = false;
+            },3000);
+        }
     }
 
     function search (text) {
