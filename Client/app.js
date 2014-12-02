@@ -91,11 +91,8 @@ io.on('connection', function (socket) {
 
     function add (track) {
         console.log( "----------->>>>>> New Tracklist Added  <<<<<<<<----------".red );
-
         getImage(track, function () {
-
             tracklist.push(track);
-
             socket.emit('newTrack', track);
             socket.broadcast.emit('newTrack', track);
         });
@@ -108,7 +105,7 @@ var request = require('request');
 
 function getImage (track, callback) {
     console.log( "Getting Image of: ".underline.red + track.album.yellow + "\n");
-
+    
     request({
         uri: "https://embed.spotify.com/oembed/?url="
             + track.uri,

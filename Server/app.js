@@ -72,7 +72,7 @@ function add (uri) {
 mopidy.on('event:tracklistChanged', tracklistChanged);
 
 function tracklistChanged () {
-    console.log( "\ntracklistChanged".red );
+    console.log( "\n Tracklist Changed".red );
     
     var tracklist = [];
 
@@ -97,6 +97,7 @@ function tracklistChanged () {
                 ws.send(
                     JSON.stringify( {type: 'newTracklist', data: tracklist} )
                 );
+                console.log("New tracklist is: ".red,tracklist);
             });
     }
 }
