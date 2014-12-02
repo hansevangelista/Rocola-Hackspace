@@ -13,7 +13,6 @@ function Player (socket) {
 
     function init (tracks) {
         console.log( "init", tracks );
-
         for( i = 0; i < tracks.length; i++){
 
             track = tracks[i];
@@ -60,13 +59,15 @@ function Player (socket) {
 
     function newTrack (track) {
 
+        console.log("------------->>>> New Track Event Triggered <<<<<<-------------------");
+        console.log("This is the playlist: ", playlist);
+        if(!playlist.children.length) document.getElementById('albumArt').setAttribute("src", track.img);
         var html = stringToDOM( trackTemplate(track) );
-
         playlist.appendChild(html);
     }
 
     function ended () {
-        console.log( "Playlist Ended" );
+        console.log( "Playback Ended" );
 
         var playlist = document.querySelector('.playlist'),
             first = playlist.children[0];
