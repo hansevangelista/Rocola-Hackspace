@@ -122,8 +122,8 @@ mopidy.on('event:trackPlaybackStarted', function (data) {
 
 mopidy.on('event:trackPlaybackEnded', function (tlTrack) {
     if(state == 'initiated'){
-        ws.send( JSON.stringify( {type: 'ended'} ) );
         ws.send(JSON.stringify({ type: 'updateTracklistOnEnd'}));
+        ws.send( JSON.stringify( {type: 'ended'} ) );
     }
 });
 
