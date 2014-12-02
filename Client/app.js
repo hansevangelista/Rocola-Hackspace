@@ -43,9 +43,9 @@ var raspi,
 io.on('connection', function (socket) {
     console.log( "new user connected" );
 
-    console.log( "tracklist", tracklist );
+    console.log( "Current Tracklist:\n", tracklist );
+    
     socket.emit('init', tracklist);
-
     socket.on('search', search);
     socket.on('add', add);
 
@@ -58,7 +58,7 @@ io.on('connection', function (socket) {
     }
 
     function ended () {
-        console.log( "ended" );
+        console.log( "----------->>>>>> Playback Ended <<<<<<<<----------" );
         socket.emit('ended');
     }
 
@@ -103,7 +103,7 @@ io.on('connection', function (socket) {
 var request = require('request');
 
 function getImage (track, callback) {
-    console.log( "getImage", track );
+    console.log( "Getting Image of: " + track.album + "\n", track);
 
     request({
         uri: "https://embed.spotify.com/oembed/?url="

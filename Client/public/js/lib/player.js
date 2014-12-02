@@ -66,12 +66,12 @@ function Player (socket) {
     }
 
     function ended () {
-        console.log( "ended" );
+        console.log( "Playlist Ended" );
 
         var playlist = document.querySelector('.playlist'),
             first = playlist.children[0];
 
-        console.log( "first", first );
+        console.log( "Deleted First Item (pop)", first );
 
         playlist.removeChild(first);
     }
