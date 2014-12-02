@@ -18,5 +18,3 @@ input.addEventListener('keypress', function (e) {
 
     if(e.which == 13) player.search(input.value);
 });
-
-/****************** Add *****************/

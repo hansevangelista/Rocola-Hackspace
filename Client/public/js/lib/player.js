@@ -49,6 +49,8 @@ function Player (socket) {
 
             html.addEventListener('click', function () {
 
+                this.classList.add('out');
+                
                 this.style.pointerEvents = 'none';
                 
                 var track = {
@@ -61,7 +63,7 @@ function Player (socket) {
 
                 var faCheck = this.querySelector('.fa-check');
                 var faPlus = this.querySelector('.fa-plus');
-                // console.log( "faCheck", faCheck, "faPlus", faPlus );
+
                 faCheck.style.display = 'block';
                 faPlus.style.display = 'none';
             });

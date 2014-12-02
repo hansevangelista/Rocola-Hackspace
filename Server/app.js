@@ -34,7 +34,6 @@ function router (message) {
     message = JSON.parse(message);
     
     if(message.type == 'add') add(message.data);
-    // if(message.type == 'getTracklist') getTracklist();
 }
 
 function add (uri) {
@@ -104,20 +103,9 @@ function tracklistChanged () {
 
 mopidy.on('event:trackPlaybackStarted', function (data) {
 
-    if (state == 'starting' || state == 'initiated') {
-        
+    if (state == 'starting' || state == 'initiated')
         state = 'initiated';
-        
-        // var track = {
-        //     name: data.tl_track.track.name,
-        //     album: data.tl_track.track.album.name,
-        //     uri: data.tl_track.track.uri
-        // };
-
-        // ws.send(JSON.stringify( {type: 'started', data: track} ));
-
-        // getTracklist();
-    }
+    
 });
 
 mopidy.on('event:trackPlaybackEnded', function (tlTrack) {
@@ -126,30 +114,3 @@ mopidy.on('event:trackPlaybackEnded', function (tlTrack) {
         ws.send( JSON.stringify( {type: 'ended'} ) );
     }
 });
-
-// function getTracklist () {
-
-//     if(state == 'initiated'){
-
-//         mopidy.tracklist.getTracks()
-//             .done( function(tracks){
-
-//                 var tracklist = [];
-
-//                 for( i = 0; i < tracks.length; i++){
-
-//                     var track= {
-//                         name: tracks[i].name,
-//                         album: tracks[i].album.name,
-//                         uri: tracks[i].uri
-//                     };
-
-//                     tracklist[i] = track;
-//                 }
-
-//                 ws.send(
-//                     JSON.stringify( {type: 'tracklist', data: tracklist} )
-//                 );
-//             });
-//     }
-// }

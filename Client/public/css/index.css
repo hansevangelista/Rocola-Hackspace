@@ -901,33 +901,6 @@ body {
   max-width: 640px;
   margin: auto;
 }
-.player .song .volume {
-  position: absolute;
-  padding: 1em;
-  color: #808080;
-}
-.player .song .bomb {
-  position: absolute;
-  right: 0;
-  padding: 1em;
-  color: #808080;
-}
-.player .song .bomb span {
-  margin-right: 0.25em;
-  font-size: 0.8em;
-}
-.player .song .play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  font-size: 4em;
-  color: rgba(255,255,255,0.5);
-}
 .player .song .song-img {
   margin: 0;
   width: 100%;
@@ -935,6 +908,7 @@ body {
 .player .song .song-img img {
   width: 100%;
   vertical-align: top;
+  pointer-events: none;
 }
 .player .song .song-info {
   position: absolute;

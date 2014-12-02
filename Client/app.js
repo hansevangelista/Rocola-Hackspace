@@ -60,58 +60,50 @@ io.on('connection', function (socket) {
     }
 
     function ended () {
-        // if (!endedRecently){
         console.log( "----------->>>>>> Playback Ended <<<<<<<<----------" );
         console.log(tracklist);
         socket.emit('ended');
-        // socket.broadcast.emit('ended');
-        // endedRecently = true;
-        // setTimeout(function(){
-        //     endedRecently = false;
-        // },3000);
-        // }
-        // else {
-        //     setTimeout(function(){
-        //         endedRecently = false;
-        //     },3000);
-        // }
-}
+    }
 
-      function search (text) {
-          mopidy.library.search( {any: [text]}, ['spotify:'] )
-              .then(result);
-      }
+    function search (text) {
+        mopidy.library.search( {any: [text]}, ['spotify:'] )
+            .then(result);
+    }
 
-      function result (data) {
+    function result (data) {
+        
+        console.log( "result", data );
+        
+        var tracklist = [],
+            tracks = [];
 
-          var tracklist = data[0].tracks,
-              tracks = [];
+        if(data[0].tracks) tracklist = data[0].tracks;
+        
+        for( i = 0; i < tracklist.length && i < 10; i++){
 
-          for( i = 0; i < tracklist.length && i < 10; i++){
+            var track = {
+                name: tracklist[i].name,
+                album: tracklist[i].album.name,
+                uri: tracklist[i].uri
+            };
 
-              var track = {
-                  name: tracklist[i].name,
-                  album: tracklist[i].album.name,
-                  uri: tracklist[i].uri
-              };
+            tracks[i] = track;
+        }
 
-              tracks[i] = track;
-          }
+        socket.emit('result', tracks);
+    }
 
-          socket.emit('result', tracks);
-      }
+    function add (track) {
+        console.log( "----------->>>>>> New Tracklist Added  <<<<<<<<----------".red );
+        getImage(track, function () {
+            tracklist.push(track);
+            socket.emit('newTrack', track);
+            socket.broadcast.emit('newTrack', track);
+        });
 
-      function add (track) {
-          console.log( "----------->>>>>> New Tracklist Added  <<<<<<<<----------".red );
-          getImage(track, function () {
-              tracklist.push(track);
-              socket.emit('newTrack', track);
-              socket.broadcast.emit('newTrack', track);
-          });
-
-          raspi.send( JSON.stringify( {type: 'add', data: track.uri} ) );
-      }
-     });
+        raspi.send( JSON.stringify( {type: 'add', data: track.uri} ) );
+    }
+});
 
 var request = require('request');
 
@@ -129,11 +121,11 @@ function getImage (track, callback) {
         }
     }, function(error, response, body) {
         
-		    var responses = JSON.parse(body);
-		    var album_art_640 = function(str){
-		        str = str.split('cover');
-		        return str[0]+'640'+str[1];
-		    }(responses.thumbnail_url);
+	var responses = JSON.parse(body);
+	var album_art_640 = function(str){
+	    str = str.split('cover');
+	    return str[0]+'640'+str[1];
+	}(responses.thumbnail_url);
         
         track.img = album_art_640;
 
@@ -143,19 +135,6 @@ function getImage (track, callback) {
 
 wss.on('connection', function (ws) {
     console.log( "Connection Handshake Successful with the Raspi".red );
-
-    // setTimeout(function(){
-
-    //     ws.send( JSON.stringify( {type: 'add', data: 'spotify:track:55h7vJchibLdUkxdlX3fK7'} ) );
-    //     setTimeout(function(){
-
-    //         ws.send( JSON.stringify( {type: 'add', data: 'spotify:track:3w3y8KPTfNeOKPiqUTakBh'} ) );
-
-    //         setTimeout(function(){
-    //             ws.send( JSON.stringify( {type: 'getTracklist'} ) );
-    //         }, 2000);
-    //     }, 2000);
-    // }, 3000);
 
     raspi = ws;
 
@@ -170,21 +149,7 @@ wss.on('connection', function (ws) {
             tracklist.shift();
             console.log("After shifting: ".cyan + tracklist);
         } 
-        // if(message.type) == 'started' started(message.data);
-        // if(message.type == 'ended') ended();
     }
-
-    // function tracklist (tracks) {
-    //     console.log( "tracks", tracks );
-    // }
-
-    // function started (track) {
-    //     console.log( "started", track );
-    // }
-
-    // function ended () {
-    //     console.log( "ended" );
-    // }
 });
 
 function newTracklist (tracks) {
