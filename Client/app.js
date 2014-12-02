@@ -119,8 +119,14 @@ function getImage (track, callback) {
                 + 'Gecko/20100101 Firefox/25.0'
         }
     }, function(error, response, body) {
-
-        track.img = JSON.parse(body).thumbnail_url;
+        
+		    var responses = JSON.parse(body);
+		    var album_art_640 = function(str){
+		        str = str.split('cover');
+		        return str[0]+'640'+str[1];
+		    }(responses.thumbnail_url);
+        
+        track.img = album_art_640;
 
         callback();
     });
