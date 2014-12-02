@@ -61,61 +61,58 @@ io.on('connection', function (socket) {
     }
 
     function ended () {
-        if (!endedRecently){
-            console.log( "----------->>>>>> Playback Ended <<<<<<<<----------" );
-            console.log("The length of tracklist is: ".red + tracklist.length);
-            console.log(tracklist);
-            tracklist.shift();
-            console.log(tracklist);
-            socket.emit('ended');
-            socket.broadcast.emit('ended');
-            endedRecently = true;
-            setTimeout(function(){
-                endedRecently = false;
-            },3000);
-        }
-        else {
-            setTimeout(function(){
-                endedRecently = false;
-            },3000);
-        }
-    }
+        // if (!endedRecently){
+        console.log( "----------->>>>>> Playback Ended <<<<<<<<----------" );
+        console.log(tracklist);
+        socket.emit('ended');
+        // socket.broadcast.emit('ended');
+        // endedRecently = true;
+        // setTimeout(function(){
+        //     endedRecently = false;
+        // },3000);
+        // }
+        // else {
+        //     setTimeout(function(){
+        //         endedRecently = false;
+        //     },3000);
+        // }
+}
 
-    function search (text) {
-        mopidy.library.search( {any: [text]}, ['spotify:'] )
-            .then(result);
-    }
+      function search (text) {
+          mopidy.library.search( {any: [text]}, ['spotify:'] )
+              .then(result);
+      }
 
-    function result (data) {
+      function result (data) {
 
-        var tracklist = data[0].tracks,
-            tracks = [];
+          var tracklist = data[0].tracks,
+              tracks = [];
 
-        for( i = 0; i < tracklist.length && i < 10; i++){
+          for( i = 0; i < tracklist.length && i < 10; i++){
 
-            var track = {
-                name: tracklist[i].name,
-                album: tracklist[i].album.name,
-                uri: tracklist[i].uri
-            };
+              var track = {
+                  name: tracklist[i].name,
+                  album: tracklist[i].album.name,
+                  uri: tracklist[i].uri
+              };
 
-            tracks[i] = track;
-        }
+              tracks[i] = track;
+          }
 
-        socket.emit('result', tracks);
-    }
+          socket.emit('result', tracks);
+      }
 
-    function add (track) {
-        console.log( "----------->>>>>> New Tracklist Added  <<<<<<<<----------".red );
-        getImage(track, function () {
-            tracklist.push(track);
-            socket.emit('newTrack', track);
-            socket.broadcast.emit('newTrack', track);
-        });
+      function add (track) {
+          console.log( "----------->>>>>> New Tracklist Added  <<<<<<<<----------".red );
+          getImage(track, function () {
+              tracklist.push(track);
+              socket.emit('newTrack', track);
+              socket.broadcast.emit('newTrack', track);
+          });
 
-        raspi.send( JSON.stringify( {type: 'add', data: track.uri} ) );
-    }
-});
+          raspi.send( JSON.stringify( {type: 'add', data: track.uri} ) );
+      }
+     });
 
 var request = require('request');
 
@@ -164,12 +161,16 @@ wss.on('connection', function (ws) {
     raspi = ws;
 
     ws.on('message', router);
-
-
+    
     function router (message) {
         message = JSON.parse(message);
         if(message.type == 'newTracklist') newTracklist(message.data);
-        // if(message.type == 'tracklist') tracklist(message.data);
+        if(message.type == 'updateTracklistOnEnd') {
+            console.log("The length of tracklist is: ".red + tracklist.length);
+            console.log("Before shifting: ".cyan + tracklist);
+            tracklist.shift();
+            console.log("After shifting: ".cyan + tracklist);
+        } 
         // if(message.type) == 'started' started(message.data);
         // if(message.type == 'ended') ended();
     }

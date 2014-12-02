@@ -24,8 +24,8 @@ mopidy.on('state:online', function () {
 
 // Create Web Socket
 var WebSocket = require('ws'),
-    // ws = new WebSocket('ws://104.131.99.47:8080');
-    ws = new WebSocket('ws://localhost:8080');
+    ws = new WebSocket('ws://104.131.99.47:8080');
+// ws = new WebSocket('ws://localhost:8080');
 
 ws.on('message', router);
 
@@ -121,8 +121,10 @@ mopidy.on('event:trackPlaybackStarted', function (data) {
 });
 
 mopidy.on('event:trackPlaybackEnded', function (tlTrack) {
-    if(state == 'initiated')
+    if(state == 'initiated'){
         ws.send( JSON.stringify( {type: 'ended'} ) );
+        ws.send(JSON.stringify({ type: 'updateTracklistOnEnd'}));
+    }
 });
 
 // function getTracklist () {
