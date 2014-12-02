@@ -14,7 +14,6 @@ mopidy.on('state:online', function () {
 
     mopidy.library.lookup(defaultUri)
         .then( function (tracklist) {
-
             mopidy.tracklist.clear();
             mopidy.tracklist.add(tracklist);
             mopidy.playback.play();
@@ -36,10 +35,21 @@ function router (message) {
 }
 
 function add (uri) {
-
+    
+    console
+        .log(
+            "<<<<<<<<<<__________ Add Event Triggered __________>>>>>>>>>>".yellow);
+    var tracklistLength;
+    
+    mopidy.tracklist.getLength()
+        .done(function(length){
+            console.log("Length of tracklist is: ".cyan , length);
+            tracklistLength = length;
+        });
+    
     mopidy.library.lookup(uri)
         .then( function (track) {
-
+            
             if(state == 'waiting') {
                 
                 mopidy.tracklist.clear();
@@ -48,20 +58,24 @@ function add (uri) {
 
                 state = 'starting';
             }
-            else mopidy.tracklist.add(track);
+            else {
+                mopidy.tracklist.add(track);
+                if (!tracklistLength) 
+                    mopidy.playback.play();
+            }
         });
 }
 
 mopidy.on('event:tracklistChanged', tracklistChanged);
 
 function tracklistChanged () {
-    console.log( "tracklistChanged" );
+    console.log( "\ntracklistChanged" );
     
     var tracklist = [];
 
     if (state == 'initiated' || state == 'starting'){
 
-        console.log( "send new tracklist" );
+        console.log( "<<<<<-------- send new tracklist -------->>>>>>>>" );
 
         mopidy.tracklist.getTracks()
             .done( function(tracks){
