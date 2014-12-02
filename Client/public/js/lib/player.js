@@ -107,8 +107,11 @@ function Player (socket) {
             image.setAttribute("src", first.dataset.img);
             name.innerHTML = first.dataset.name + ' - ' + first.dataset.album;
         } 
-        else
+        else{
             image.setAttribute("src", "img/logo.png");
+            name.innerHTML = "swipe left for more awesomeness!";
+            alert("Ohai! :) it seems the playlist stopped, mind adding a few more?");
+        }
     }
 
     return {
