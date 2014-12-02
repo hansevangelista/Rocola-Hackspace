@@ -45,15 +45,12 @@ function Player (socket) {
     }
 
     function search (text) {
-
         resultTracks.innerHTML = "";
-
         socket.emit('search', text);
     }
 
     function add (track) {
         console.log( "add", track );
-
         socket.emit('add', track);
     }
 
@@ -61,7 +58,8 @@ function Player (socket) {
 
         console.log("------------->>>> New Track Event Triggered <<<<<<-------------------");
         console.log("This is the playlist: ", playlist);
-        if(!playlist.children.length) document.getElementById('albumArt').setAttribute("src", track.img);
+        if(!playlist.children.length) 
+            document.getElementById('albumArt').setAttribute("src", track.img);
         var html = stringToDOM( trackTemplate(track) );
         playlist.appendChild(html);
     }
@@ -71,10 +69,16 @@ function Player (socket) {
 
         var playlist = document.querySelector('.playlist'),
             first = playlist.children[0];
-
         console.log( "Deleted First Item (pop)", first );
-
         playlist.removeChild(first);
+        
+        if(playlist.children.length) 
+            document.getElementById('albumArt')
+            .setAttribute("src", 
+                          playlist.getElementsByTagName('img')[0].getAttribute("src"));
+        else
+            document.getElementById('albumArt')
+            .setAttribute("src", "img/logo.png");
     }
 
     return {
