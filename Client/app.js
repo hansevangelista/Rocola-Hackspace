@@ -40,7 +40,6 @@ var socketio = require('socket.io'),
     io = socketio(server);
 
 var raspi,
-    endedRecently = false,
     tracklist = [];
 
 io.on('connection', function (socket) {
