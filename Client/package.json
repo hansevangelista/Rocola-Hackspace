@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "colors": "^1.0.3",
     "express": "~4.6.1",
     "mopidy": "^0.4.1",
     "request": "^2.49.0",

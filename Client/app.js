@@ -1,3 +1,5 @@
+var colors = require('colors');
+
 var express = require('express'),
     swig = require('swig');
 
@@ -20,7 +22,7 @@ app.get('/', function(req, res){
 var port = 4000;
 
 var server = app.listen(port, function () {
-    console.log('server listening on port', port);
+    console.log('server listening on port'.yellow, port);
 });
 
 // Web Socket Server
@@ -41,7 +43,7 @@ var raspi,
     tracklist = [];
 
 io.on('connection', function (socket) {
-    console.log( "new user connected" );
+    console.log( "Here comes a new CHALLENGUEERR".green );
 
     console.log( "Current Tracklist:\n", tracklist );
     
@@ -103,7 +105,7 @@ io.on('connection', function (socket) {
 var request = require('request');
 
 function getImage (track, callback) {
-    console.log( "Getting Image of: " + track.album + "\n", track);
+    console.log( "Getting Image of: ".underline.red + track.album.yellow + "\n");
 
     request({
         uri: "https://embed.spotify.com/oembed/?url="
@@ -123,7 +125,7 @@ function getImage (track, callback) {
 }
 
 wss.on('connection', function (ws) {
-    console.log( "connection whit raspi" );
+    console.log( "Connection Handshake Successful with the Raspi".red );
 
     // setTimeout(function(){
 
@@ -166,5 +168,5 @@ wss.on('connection', function (ws) {
 
 function newTracklist (tracks) {
     // tracklist = tracks;
-    console.log( "newTracklist", tracklist );
+    console.log( "Here comes a new Tracklist: \n".green , tracklist );
 }

@@ -1,3 +1,5 @@
+var colors = require('colors');
+
 // Create Mopidy
 var Mopidy = require('mopidy'),
     mopidy = new Mopidy({
@@ -69,13 +71,13 @@ function add (uri) {
 mopidy.on('event:tracklistChanged', tracklistChanged);
 
 function tracklistChanged () {
-    console.log( "\ntracklistChanged" );
+    console.log( "\ntracklistChanged".red );
     
     var tracklist = [];
 
     if (state == 'initiated' || state == 'starting'){
 
-        console.log( "<<<<<-------- send new tracklist -------->>>>>>>>" );
+        console.log( "<<<<<-------- send new tracklist -------->>>>>>>>".green );
 
         mopidy.tracklist.getTracks()
             .done( function(tracks){
