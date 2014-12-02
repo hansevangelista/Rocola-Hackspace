@@ -24,6 +24,7 @@ mopidy.on('state:online', function () {
 
 // Create Web Socket
 var WebSocket = require('ws'),
+    // ws = new WebSocket('ws://104.131.99.47:8080');
     ws = new WebSocket('ws://localhost:8080');
 
 ws.on('message', router);
