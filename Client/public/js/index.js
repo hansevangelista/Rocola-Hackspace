@@ -12,6 +12,15 @@ window.next = document.querySelector('.fa-angle-right');
 prev.addEventListener('click', pages.prev);
 next.addEventListener('click', pages.next);
 
+/***************** Settings ****************/
+window.avatar = document.querySelector('.avatar');
+window.settings = document.querySelector('.settings');
+
+avatar.addEventListener('click', function () {
+    console.log( "setings", settings.classList.toggle('visible') );
+});
+
+
 // new Login();
 
 /*************** Socket.io **************/

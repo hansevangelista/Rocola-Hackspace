@@ -53,6 +53,8 @@
 
 .search
 	.header
+		max-width 1000px
+		margin auto
 		padding 1em
 		position relative
 		.next
@@ -113,9 +115,21 @@
 		padding .5em
 		color secondary-color
 		max-width 1000px
-		// background rgba(base-color, 0.9)
-		// background green
 		margin auto
+		position relative
+		// background blue
+		.settings
+			position absolute
+			display none
+			top 100%
+			right 0
+			&.visible
+				display block
+			.option
+				padding .5em
+				font-size .9em
+				margin-right .5em
+				background base-color
 		.fa-angle-left	
 			font-size 2.5em
 			padding-right 1em
