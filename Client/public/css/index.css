@@ -819,6 +819,49 @@ body {
     height: 65%;
   }
 }
+.overlay-login {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 2;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+}
+.overlay-login .content {
+  margin: auto;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0px 10px 10px rgba(0,0,0,0.6);
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.6);
+}
+.overlay-login .content .title {
+  color: #dcdcdc;
+  float: right;
+  display: inline;
+}
+.overlay-login .content .abeja-img img {
+  width: 120px;
+  float: left;
+  display: inline;
+}
+.feisbuk-img img {
+  width: 80px;
+  display: inline;
+}
+.tuitah-img img {
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #fff;
+  width: 80px;
+  display: inline;
+}
 .wrapper {
   background-image: url("../img/back.jpg");
   -webkit-background-size: cover;
@@ -826,6 +869,15 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+}
+.blur {
+  -webkit-filter: blur(7px);
+}
+.dontDisplay {
+  display: none;
+}
+.clear {
+  clear: both;
 }
 .search {
   background-color: rgba(0,0,0,0.8);
@@ -904,6 +956,17 @@ body {
   position: relative;
   max-width: 640px;
   margin: auto;
+}
+.player .song .profile-pic {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+.player .song .profile-pic img {
+  width: 60px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
 }
 .player .song .song-img {
   margin: 0;

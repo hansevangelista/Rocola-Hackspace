@@ -10,11 +10,52 @@
 	100%
 		transform rotate(360deg)
 
+.overlay-login
+	position absolute
+	left 0
+	right 0
+	bottom 0
+	top 0
+	z-index 2
+	display flex
+	.content
+		margin auto
+		border-radius 20px
+		background rgba(black, 0.3) 
+		box-shadow 0px 10px 10px rgba(black, 0.6) 
+		.title
+			color #dcdcdc
+			float right
+			display inline
+		.abeja-img img
+			width 120px
+			float left
+			display inline
+    .feisbuk-img img
+			width 80px
+			display inline
+		.tuitah-img img
+			border-radius 8px
+			background-color #fff
+			width 80px
+			display inline
+
+
+	
 .wrapper
 	background-image url("../img/back.jpg")
 	background-size cover
 	background-repeat no-repeat
 	background-position center center
+
+.blur
+	-webkit-filter blur(7px)
+
+.dontDisplay
+	display none
+  
+.clear
+	clear both
 
 .search
 	background-color rgba(black, 0.8)
@@ -94,6 +135,14 @@
 		// 	transform translate(-50%, -50%)
 		// 	font-size 4em
 		// 	color rgba(white, 0.5)
+		.profile-pic
+			position absolute
+			top 0
+			right 0
+			z-index 2
+			img
+				width 60px
+				border-radius 50px
 		.song-img
 			margin 0
 			width 100%
