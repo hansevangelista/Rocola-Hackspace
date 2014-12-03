@@ -5,6 +5,8 @@ window.pages = new Pages(document.querySelector('.wrapper'), {
     init: 1
 });
 
+new Login();
+
 /*************** Socket.io **************/
 var socket = io();
 
