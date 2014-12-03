@@ -10,38 +10,33 @@
 	100%
 		transform rotate(360deg)
 
-.overlay-login
+.overlay
 	position absolute
 	left 0
 	right 0
 	bottom 0
 	top 0
-	z-index 2
+	box-shadow inset 0px 0px 30px 15px black
+	// background red
+	z-index 1
 	display flex
 	.content
 		margin auto
-		border-radius 20px
-		background rgba(black, 0.3) 
-		box-shadow 0px 10px 10px rgba(black, 0.6) 
-		.title
-			color #dcdcdc
-			float right
-			display inline
-		.abeja-img img
-			width 120px
-			float left
-			display inline
-    .feisbuk-img img
-			width 80px
-			display inline
-		.tuitah-img img
-			border-radius 8px
-			background-color #fff
-			width 80px
-			display inline
+		border-radius 10px
+		padding 1em
+		background rgba(base-color, 0.75)
+		color secondary-color
+		text-align center
+		.logo
+			max-width 6.25em
+			margin auto
+			img
+				width 100%
+	.message
+		margin .5em 0
+	.socials
+		font-size 3em
 
-
-	
 .wrapper
 	background-image url("../img/back.jpg")
 	background-size cover
@@ -51,11 +46,11 @@
 .blur
 	-webkit-filter blur(7px)
 
-.dontDisplay
-	display none
+// .dontDisplay
+// 	display none
   
-.clear
-	clear both
+// .clear
+// 	clear both
 
 .page
 	background-color rgba(black, 0.8)
