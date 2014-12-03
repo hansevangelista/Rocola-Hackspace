@@ -17,7 +17,7 @@ window.avatar = document.querySelector('.avatar');
 window.settings = document.querySelector('.settings');
 
 avatar.addEventListener('click', function () {
-    console.log( "setings", settings.classList.toggle('visible') );
+    settings.classList.toggle('visible');
 });
 
 

@@ -12,7 +12,9 @@ function Login (){
 
             document.querySelector('.user span').innerHTML = findFullName(authData);
 
-            
+            document.querySelector('.settings').addEventListener('click', function(event){
+              ref.unauth();  
+            });
             console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
             console.log(authData);
         } else {
@@ -22,6 +24,7 @@ function Login (){
             document.querySelector('.avatar img')
                 .setAttribute("src", "img/abeja.png");
             document.querySelector('.user span').innerHTML = "Hack Space";
+            document.querySelector('.settings').classList.remove("visible");
         }
     });
 
