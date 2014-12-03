@@ -4,6 +4,7 @@ function Player (socket) {
         image = document.querySelector('.song img'),
         name = document.querySelector('.song .name'),
         spinner = document.querySelector('.spinner'),
+        musicbar = document.querySelector('.musicbar'),
         resultTracks = document.querySelector('.result'),
         trackTemplate = _.template(document.getElementById('track').innerHTML),
         resultTrackTemplate =
@@ -91,6 +92,9 @@ function Player (socket) {
         if(!playlist.children.length){
             image.setAttribute("src", track.img);
             name.innerHTML = track.name + ' - ' + track.album;
+
+            console.log( "iniciar animacion!!" );
+            musicbar.classList.add('animate');
         }
 
         var html = stringToDOM( trackTemplate(track) );
@@ -110,9 +114,12 @@ function Player (socket) {
             name.innerHTML = first.dataset.name + ' - ' + first.dataset.album;
         } 
         else{
+            // console.log( "sin tracks" );
             image.setAttribute("src", "img/logo.png");
             name.innerHTML = "swipe left for more awesomeness!";
-            alert("Ohai! :) it seems the playlist stopped, mind adding a few more?");
+
+            musicbar.classList.remove('animate');
+            // alert("Ohai! :) it seems the playlist stopped, mind adding a few more?");
         }
     }
 

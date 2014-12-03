@@ -72,7 +72,7 @@ io.on('connection', function (socket) {
 
     function result (data) {
         
-        console.log( "result", data );
+        // console.log( "result", data );
         
         var tracklist = [],
             tracks = [];
