@@ -1,7 +1,7 @@
 
 /***************** Pages ****************/
 window.pages = new Pages(document.querySelector('.wrapper'), {
-    time: 250,
+    time: 700,
     init: 1
 });
 

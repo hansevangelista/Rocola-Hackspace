@@ -193,7 +193,10 @@ html {
 }
 @media screen and (min-width: 1000px) {
   html {
-    font-size: 18px;
+    font-size: 20px;
+  }
+  .player {
+    dislay: flex;
   }
 }
 html {
@@ -884,7 +887,6 @@ body {
   min-height: 100%;
 }
 .search .header {
-  background-color: #181f24;
   padding: 1em;
 }
 .search .header .title {
@@ -950,7 +952,7 @@ body {
 }
 .player {
   background-color: rgba(0,0,0,0.8);
-  min-height: 100%;
+  height: 100%;
 }
 .player .song {
   position: relative;
@@ -982,11 +984,11 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  background-image: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.25) 20%, rgba(0,0,0,0.75));
-  background-image: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.25) 20%, rgba(0,0,0,0.75));
-  background-image: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.25) 20%, rgba(0,0,0,0.75));
-  background-image: -ms-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.25) 20%, rgba(0,0,0,0.75));
-  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.25) 20%, rgba(0,0,0,0.75));
+  background-image: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8));
+  background-image: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8));
+  background-image: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8));
+  background-image: -ms-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8));
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8));
   padding: 0.5em 1em;
 }
 .player .song .song-info .content {

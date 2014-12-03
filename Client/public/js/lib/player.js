@@ -118,12 +118,12 @@ function Player (socket) {
             name.innerHTML = first.dataset.name + ' - ' + first.dataset.album;
         } 
         else{
-            // console.log( "sin tracks" );
+            console.log( "sin tracks" );
+
             image.setAttribute("src", "img/logo.png");
             name.innerHTML = "swipe left for more awesomeness!";
 
             musicbar.classList.remove('animate');
-            // alert("Ohai! :) it seems the playlist stopped, mind adding a few more?");
         }
     }
 
