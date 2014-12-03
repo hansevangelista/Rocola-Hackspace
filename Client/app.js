@@ -50,6 +50,7 @@ io.on('connection', function (socket) {
     socket.emit('init', tracklist);
     socket.on('search', search);
     socket.on('add', add);
+    socket.on('nextTrack', nextTrack);
 
     if(raspi)
         raspi.on('message', router);
@@ -102,6 +103,11 @@ io.on('connection', function (socket) {
         });
 
         raspi.send( JSON.stringify( {type: 'add', data: track.uri} ) );
+    }
+
+    function nextTrack(){
+        console.log("----->>> Next Track Event Added <<<<-------".red);
+        raspi.send(JSON.stringify({type: 'nextTrack'}));
     }
 });
 

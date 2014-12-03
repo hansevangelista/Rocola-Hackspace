@@ -84,6 +84,10 @@ function Player (socket) {
         socket.emit('add', track);
     }
 
+    function nextTrack(){
+        socket.emit("nextTrack");
+    }
+
     function newTrack (track) {
 
         console.log("------------->>>> New Track Event Triggered <<<<<<-------------------");
@@ -124,6 +128,7 @@ function Player (socket) {
     }
 
     return {
-        search: search
+        search: search,
+        nextTrack: nextTrack
     };
 }

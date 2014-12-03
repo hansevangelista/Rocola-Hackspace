@@ -34,6 +34,7 @@ function router (message) {
     message = JSON.parse(message);
     
     if(message.type == 'add') add(message.data);
+    else if (message.type == 'nextTrack') nextTrack();
 }
 
 function add (uri) {
@@ -68,6 +69,20 @@ function add (uri) {
         });
 }
 
+function nextTrack (){
+    mopidy.playback.getCurrentTlTrack()
+        .done(function (tl_track) {
+            console.log("Track to Be Removed: ".yellow + JSON.stringify(tl_track,null, 2));
+            mopidy.tracklist.remove({'tlid': [tl_track["tlid"]]});
+            mopidy.tracklist.getLength()
+                .done(function(length){
+                    if (length) {
+                        mopidy.playback.next();    
+                        mopidy.playback.play();
+                    }
+                });
+        });
+}
 mopidy.on('event:tracklistChanged', tracklistChanged);
 
 function tracklistChanged () {
