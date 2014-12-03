@@ -833,8 +833,8 @@ body {
   right: 0;
   bottom: 0;
   top: 0;
-  -webkit-box-shadow: inset 0px 0px 30px 15px #000;
-  box-shadow: inset 0px 0px 30px 15px #000;
+  -webkit-box-shadow: inset 0px 0px 30px 10px #000;
+  box-shadow: inset 0px 0px 30px 10px #000;
   z-index: 1;
   display: -webkit-box;
   display: -moz-box;
@@ -848,7 +848,7 @@ body {
   -webkit-border-radius: 10px;
   border-radius: 10px;
   padding: 1em;
-  background: rgba(24,31,36,0.75);
+  background: rgba(20,20,20,0.55);
   color: #eaf6f9;
   text-align: center;
 }
@@ -865,6 +865,9 @@ body {
 .overlay .socials {
   font-size: 3em;
 }
+.overlay .socials .fa {
+  margin: 0 0.2em;
+}
 .wrapper {
   background-image: url("../img/back.jpg");
   -webkit-background-size: cover;
@@ -874,7 +877,7 @@ body {
   background-position: center center;
 }
 .blur {
-  -webkit-filter: blur(7px);
+  -webkit-filter: blur(3px);
 }
 .page {
   background-color: rgba(0,0,0,0.8);

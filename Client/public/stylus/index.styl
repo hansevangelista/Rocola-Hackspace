@@ -16,15 +16,15 @@
 	right 0
 	bottom 0
 	top 0
-	box-shadow inset 0px 0px 30px 15px black
-	// background red
+	box-shadow inset 0px 0px 30px 10px  black
 	z-index 1
 	display flex
 	.content
 		margin auto
 		border-radius 10px
 		padding 1em
-		background rgba(base-color, 0.75)
+		// background rgba(base-color, 0.75)
+		background rgba(20,20,20, .55)
 		color secondary-color
 		text-align center
 		.logo
@@ -36,6 +36,8 @@
 		margin .5em 0
 	.socials
 		font-size 3em
+		.fa
+			margin 0 .2em
 
 .wrapper
 	background-image url("../img/back.jpg")
@@ -44,13 +46,7 @@
 	background-position center center
 
 .blur
-	-webkit-filter blur(7px)
-
-// .dontDisplay
-// 	display none
-  
-// .clear
-// 	clear both
+	-webkit-filter blur(3px)
 
 .page
 	background-color rgba(black, 0.8)
@@ -59,8 +55,6 @@
 	.header
 		padding 1em
 		position relative
-		// background rgba(base-color, 0.9)
-		// background green
 		.next
 			position absolute
 			right 0
