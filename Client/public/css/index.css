@@ -979,6 +979,7 @@ body {
 }
 .player .nav .settings {
   position: absolute;
+  z-index: 3;
   display: none;
   top: 100%;
   right: 0;
