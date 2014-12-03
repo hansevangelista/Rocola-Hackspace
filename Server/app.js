@@ -73,10 +73,10 @@ function nextTrack (){
     mopidy.playback.getCurrentTlTrack()
         .done(function (tl_track) {
             console.log("Track to Be Removed: ".yellow + JSON.stringify(tl_track,null, 2));
-            mopidy.tracklist.remove({'tlid': [tl_track["tlid"]]});
             mopidy.tracklist.getLength()
                 .done(function(length){
                     if (length) {
+                        mopidy.tracklist.remove({'tlid': [tl_track["tlid"]]});
                         mopidy.playback.next();    
                         mopidy.playback.play();
                     }
