@@ -4,25 +4,33 @@ function Login (){
         console.log( "authData" );
         if (authData) {
             // user authenticated with Firebase
-            document.getElementsByClassName('overlay-login')[0].classList.add('dontDisplay');
-            document.getElementsByClassName('wrapper')[0].classList.remove("blur");
-            document.getElementById('profile-pic')
+            document.querySelector('.overlay').classList.add('dontDisplay');
+            document.querySelector('.wrapper').classList.remove("blur");
+
+            document.querySelector('.avatar img')
                 .setAttribute("src", findProfilePic(authData));
+
+            document.querySelector('.user span').innerHTML = findFullName(authData);
+
+            
             console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
             console.log(authData);
         } else {
             // user is logged out
-            document.getElementsByClassName('overlay-login')[0].classList.remove('dontDisplay');
-            document.getElementsByClassName('wrapper')[0].classList.add("blur");
-            document.getElementById('profile-pic').setAttribute("src","");
+            document.querySelector('.overlay').classList.remove('dontDisplay');
+            document.querySelector('.wrapper').classList.add("blur");
+            document.querySelector('.avatar img')
+                .setAttribute("src", "img/abeja.png");
+            document.querySelector('.user span').innerHTML = "Hack Space";
         }
     });
 
     console.log('login is there');
-    document.getElementById('feisbuk').addEventListener('click', function(){
+    document.querySelector('.fa-facebook-square').addEventListener('click', function(){
+        console.log("facebook");
       userLogin("facebook");
     });
-    document.getElementById('tuitah').addEventListener('click', function(){
+    document.querySelector('.fa-twitter-square').addEventListener('click', function(){
         userLogin("twitter");
     });
 
@@ -44,4 +52,14 @@ function Login (){
         
         return "Not found";
     };
+    function findFullName(authData){
+        var provider = authData.provider;
+        if (provider == "facebook"){
+            return authData.facebook.displayName;
+        }
+        else if (provider == "twitter"){
+           return authData.twitter.displayName; 
+        }
+        return "Anonymous Frog";
+    }
 }

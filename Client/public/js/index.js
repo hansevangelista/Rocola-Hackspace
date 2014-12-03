@@ -21,7 +21,7 @@ avatar.addEventListener('click', function () {
 });
 
 
-// new Login();
+new Login();
 
 /*************** Socket.io **************/
 var socket = io();

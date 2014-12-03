@@ -867,6 +867,7 @@ body {
 }
 .overlay .socials .fa {
   margin: 0 0.2em;
+  cursor: pointer;
 }
 .wrapper {
   background-image: url("../img/back.jpg");
@@ -878,6 +879,9 @@ body {
 }
 .blur {
   -webkit-filter: blur(3px);
+}
+.dontDisplay {
+  display: none;
 }
 .page {
   background-color: rgba(0,0,0,0.8);
