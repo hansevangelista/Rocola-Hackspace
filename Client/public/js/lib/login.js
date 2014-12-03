@@ -1,6 +1,7 @@
 function Login (){
     var ref = new Firebase("https://rocola-hackspace.firebaseio.com");
     ref.onAuth(function(authData) {
+        console.log( "authData" );
         if (authData) {
             // user authenticated with Firebase
             document.getElementsByClassName('overlay-login')[0].classList.add('dontDisplay');

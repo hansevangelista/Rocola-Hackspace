@@ -184,6 +184,11 @@ td,
 th {
   padding: 0;
 }
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 html {
   font-size: 16px;
   -webkit-user-select: none;
@@ -882,19 +887,23 @@ body {
 .clear {
   clear: both;
 }
-.search {
+.page {
   background-color: rgba(0,0,0,0.8);
-  min-height: 100%;
 }
 .search .header {
   padding: 1em;
+  position: relative;
 }
-.search .header .title {
-  margin: 0;
+.search .header .next {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0.75em;
   color: #eaf6f9;
-  font-size: 1.5em;
-  text-align: center;
-  margin-bottom: 0.5em;
+}
+.search .header .next .fa-angle-right {
+  font-size: 2.5em;
+  padding-left: 1em;
 }
 .search .header .input-content {
   display: table;
@@ -904,8 +913,8 @@ body {
   font-size: 0.8em;
   -webkit-border-radius: 3em;
   border-radius: 3em;
-  padding: 0.5em 2em;
-  width: 200px;
+  padding: 0.625em 2em;
+  width: 16em;
   border: none;
   outline: 0;
   color: #555;
@@ -929,6 +938,7 @@ body {
 }
 .search .result {
   padding: 1em;
+  padding-top: 0;
   max-width: 1000px;
   margin: auto;
 }
@@ -950,25 +960,54 @@ body {
   color: #9acd32;
   display: none;
 }
-.player {
-  background-color: rgba(0,0,0,0.8);
-  height: 100%;
+.player .nav {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 0.5em;
+  color: #eaf6f9;
+  max-width: 1000px;
+  margin: auto;
+}
+.player .nav .fa-angle-left {
+  font-size: 2.5em;
+  padding-right: 1em;
+}
+.player .nav .user {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 0.9em;
+  padding-right: 0.75em;
+  text-align: right;
+}
+.player .nav .avatar {
+  max-width: 3em;
+  margin: 0;
+}
+.player .nav .avatar img {
+  width: 100%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  vertical-align: top;
 }
 .player .song {
   position: relative;
   max-width: 640px;
   margin: auto;
-}
-.player .song .profile-pic {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-}
-.player .song .profile-pic img {
-  width: 60px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
 }
 .player .song .song-img {
   margin: 0;

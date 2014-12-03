@@ -13,70 +13,79 @@
   </head
   <body>
     
-    <div class="overlay-login" >
+    <!-- <div class="overlay-login" >
 
-      <div class="content">
-        <div>
-          <figure class="abeja-img">
-            <img src="img/abeja.png"/>
-            <h1 class="title">Welcome to the HackSpace!</h1>
-          </figure>
-        </div>
-        <div class="clear"></div>
-        <div>
-          <figure class="feisbuk-img">
-            <a href="#" id="feisbuk">
-              <img src="img/feisbuk.png"/>
-            </a>
-          </figure>
-          <figure class="tuitah-img">
-            <a href="#" id="tuitah">
-              <img src="img/tuitah.png"/>
-            </a>
-          </figure>
-        </div>
-      </div>
+    <div class="content">
+    <div>
+    <figure class="abeja-img">
+    <img src="img/abeja.png"/>
+    <h1 class="title">Welcome to the HackSpace!</h1>
+    </figure>
     </div>
+    <div class="clear"></div>
+    <div>
+    <figure class="feisbuk-img">
+    <a href="#" id="feisbuk">
+    <img src="img/feisbuk.png"/>
+    </a>
+    </figure>
+    <figure class="tuitah-img">
+    <a href="#" id="tuitah">
+    <img src="img/tuitah.png"/>
+    </a>
+    </figure>
+    </div>
+    </div>
+    </div> -->
     
-    <div class="wrapper blur">
+    <!-- <div class="wrapper blur"> -->
+    <div class="wrapper">
       <div class="page">
         <div class="search">
-	        <header class="header">
-	          <h1 class="title">Rocola HackSpace</h1>
-	          <div class="input-content">
-	            <input class="input" type="text"
+	  <header class="header">
+            <!-- <h1 class="title">Rocola HackSpace</h1> -->
+	    <div class="input-content">
+	      <input class="input" type="text"
                      placeholder="Search songs, albums ..."></input>
-	          </div>
-	        </header>
+	    </div>
+            <div class="next">
+              <i class="fa fa-angle-right"></i>
+            </div>
+	  </header>
           <div class="spinner">
             <i class="fa fa-spinner"></i>
           </div>
-	        <div class="result">
-	        </div>
+	  <div class="result"> </div>
         </div>
       </div>
       <div class="page">
         <div class="player">
-	        <div class="song">
+          <div class="nav">
+            <i class="fa fa-angle-left"></i>
+            <div class="user"> <span class="name">Diego Berrocal</span>
+            </div>
+            <figure class="avatar">
+              <img src="img/avatar.jpg"/>
+              <!-- <img src="img/abeja.png"/> -->
+            </figure>
+          </div>
+	  <div class="song">
             <figure class="song-img">
               <img src="img/logo.png"/>
             </figure>
-            <figure class="profile-pic">
-              <img id="profile-pic" src=""/>
-            </figure>
             <div class="song-info">
-	            <div class="content">
-	              <div class="name">Swipe rigth to search for the good stuff</div>
-	              <div class="musicbar animate">
-	                <span class="bar1 a3 lter"></span>
-	                <span class="bar2 a5 lt"></span>
-	                <span class="bar3 a1 bg"></span>
-	                <span class="bar4 a4 dk"></span>
-	                <span class="bar5 a2 dker"></span>
-	              </div>
-	            </div>
-	          </div>
+	      <div class="content">
+	        <div class="name">Swipe rigth to search for the good stuff</div>
+	        <div class="musicbar animate">
+	          <span class="bar1 a3 lter"></span>
+	          <span class="bar2 a5 lt"></span>
+	          <span class="bar3 a1 bg"></span>
+	          <span class="bar4 a4 dk"></span>
+	          <span class="bar5 a2 dker"></span>
 	        </div>
+	      </div>
+	    </div>
+	  </div>
           <div class="playlist"></div>
         </div>
       </div>
@@ -87,11 +96,11 @@
            data-name="<%= name %>"
            data-album="<%= album %>"
            data-uri="<%= uri %>">
-	      <div class="name"> <%= name %> - <%= album %> </div>
-	      <div class="ckeck">
-	        <i class="fa fa-check"></i>
-	        <i class="fa fa-plus"></i>
-	      </div>
+	<div class="name"> <%= name %> - <%= album %> </div>
+	<div class="ckeck">
+	  <i class="fa fa-check"></i>
+	  <i class="fa fa-plus"></i>
+	</div>
       </div>
     </script>
     
@@ -101,7 +110,7 @@
            data-album="<%= album %>"
            data-uri="<%= uri %>"
            data-img="<%= img %>">
-	      <div class="name"> <%= name %> - <%= album %> </div>
+	<div class="name"> <%= name %> - <%= album %> </div>
         <figure class="image"><img src="<%= img %>"/></figure>
       </div>
     </script>

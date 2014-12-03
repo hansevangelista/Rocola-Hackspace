@@ -5,7 +5,14 @@ window.pages = new Pages(document.querySelector('.wrapper'), {
     init: 1
 });
 
-new Login();
+/***************** Next Prev ****************/
+window.prev = document.querySelector('.fa-angle-left');
+window.next = document.querySelector('.fa-angle-right');
+
+prev.addEventListener('click', pages.prev);
+next.addEventListener('click', pages.next);
+
+// new Login();
 
 /*************** Socket.io **************/
 var socket = io();
