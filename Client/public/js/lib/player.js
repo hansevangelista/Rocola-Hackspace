@@ -121,7 +121,7 @@ function Player (socket) {
             console.log( "sin tracks" );
 
             image.setAttribute("src", "img/logo.png");
-            name.innerHTML = "swipe left for more awesomeness!";
+            name.innerHTML = "swipe rigth for more awesomeness!";
 
             musicbar.classList.remove('animate');
         }
