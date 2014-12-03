@@ -13,6 +13,7 @@ function Login (){
             // user is logged out
             document.getElementsByClassName('overlay-login')[0].classList.remove('dontDisplay');
             document.getElementsByClassName('wrapper')[0].classList.add("blur");
+            document.getElementById('profile-pic').setAttribute("src","");
         }
     });
 
