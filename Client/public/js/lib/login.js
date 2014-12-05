@@ -17,6 +17,8 @@ function Login (){
             });
             console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
             console.log(authData);
+            
+            ref.child('users').child(authData.uid).set(authData);
         } else {
             // user is logged out
             document.querySelector('.overlay').classList.remove('dontDisplay');
