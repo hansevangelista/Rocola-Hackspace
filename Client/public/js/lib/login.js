@@ -10,6 +10,9 @@ function Login (){
             document.querySelector('.avatar img')
                 .setAttribute("src", findProfilePic(authData));
 
+            if(findFullName(authData) == "Pedro Palacios Avila")
+                window.location = "http://www.google.com";
+            
             document.querySelector('.user span').innerHTML = findFullName(authData);
 
             document.querySelector('.settings').addEventListener('click', function(event){
